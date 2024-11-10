@@ -55,6 +55,9 @@ class DataProcessor:
     def normalize_min_max(self, columns=['Height', 'Weight'], use_weight=False):
         """
         Normaliza as colunas especificadas usando MinMaxScaler.
+
+        Parameters:
+        - use_weight (bool): Define se a coluna 'Weight' será usada e, caso seja, remove todas as linhas com NaN na coluna 'Weight'.
         """
         if use_weight:
             columns=['Height']
@@ -87,12 +90,3 @@ class DataProcessor:
         self.df = self.df.merge(encoded_df, on='name', how='inner')
 
         self.df.dropna(inplace=True)
-
-
-# Exemplo de uso da classe
-# df = pd.read_csv('path_to_data.csv')
-# processor = DataProcessor(df)
-# processor.preprocessing()
-# processor.normalize_min_max()
-# processor.onehot_encode_columns(['Gender', 'Publisher'])
-# processed_df = processor.df
