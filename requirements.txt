@@ -4,3 +4,6 @@ pandas
 seaborn
 numpy
 matplotlib
+kmodes
+lightgbm
+xgboost
