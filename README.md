@@ -125,13 +125,24 @@ Os resultados não foram bons o suficiente para colocar em produção. Mas repre
 **Questão 5**: Transforme o problema em uma tarefa de regressão e tente prever o peso dos super-heróis com base nos outros recursos.
 
 1. Qual algoritmo você escolheu e por quê?
+**Resposta**:  Inicialmente eu tentei uma regressão linear mas performou muito mal. Por fim eu optei por usar o Random Forest Regressor devido a grande quantidade de variáveis categóricas.
+
 2. Como você avalia o desempenho do seu algoritmo neste caso?
+**Resposta**:  O desempenho foi ruim pois quando analisamos a Mean Squared Error (MSE) ele está errando, em média, com a magnitude de 368,76. E quando olhamos para R-squared o modelo explica apenas cerca de 38% da variabilidade nos dados de teste
 
 ---
 
 ### Análise
 
 **Questão 6**: Quais aspectos desse conjunto de dados apresentam problemas para agrupamento, classificação e regressão? Como você resolveu esses problemas?
+
+**Resposta**: Os dados apresentam valores faltantes para a maioria das colunas. Não foi possível utilizar as variáveis Race e Skin color. E foi necessário imputar valores nas variáveis Height e Weight. Optei por preecher com a média mesmo sabendo que pode nao ser a melhor opção.
+
+O maior problema para a clusterização foi a alta dimensionalidade após aplicar o onehotencoder. Para resolver isso eu apliquei o PCA e como foram selecionadas apenas variáveis categóricas utilizei uma variaçao do K-Means, o K-Modes, que performa melhor quando temos apenas variáveis categóricas.
+
+No caso da classificação, temos como desafios o tamnaho do dataset, pós a limpeza o dataset ficou pequeno, e a base ficou desbalanceada 70-30. Assim como, no caso anterior o dataset de modelagem ficou com uma alta dimensionalidade. Resolvi a questão da dimensionalidade escolhendo as features mais importantes, fiz isso usando o feature importance. Quanto ao desbalanceamento, eu tentei dar pesos as classe e não funcionou. Uma opção seria fazer um oversample, eu não gosto da ideia de criar dados sintéticos. Por fim, o desbalanceamento foi atenuado pelo modelo usando o parâmetro "balanced".
+
+Quanto a regressão e previsão do Weight, o maior problema é a quantidade de nulos da coluna. Aproximadamente 30% da coluna é nula. Sendo assim, removi da base esses casos onde a coluna Weight é nula, o que diminuiu o tamnaho da base. A dimensionalidade foi resolvida usando a features mais importantes e o Random Forest performou melhor com as variáveis categóricas. A variável Height poderia ter ajuda mas possui muitos nulos.
 
 ---
 
