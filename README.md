@@ -89,6 +89,8 @@ Portanto, 4 a 5 clusters é a melhor quantidade recomendada, considerando a estr
 
 O K-Modes é um algoritmo de clusterização projetado especificamente para lidar com dados categóricos. É uma adaptação do algoritmo K-Means, que é voltado para dados numéricos, e utiliza medidas de similaridade adequadas a dados categóricos para agrupar elementos com características semelhantes.
 
+Entendo que a parte mais trabalhosa da clusterização é analisar cada um dos clusters para entender se o agrupamento fazs sentido. Isto não foi feito pq dmanda mais tempo.
+
 ---
 
 ### Identificando os Bandidos
